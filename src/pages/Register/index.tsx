@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Header } from "../../components/Header";
 import { InputText } from "../../components/InputText";
 import { RegisterContainer, FormContainer, FieldGroup, Button, Title } from "./styles";
+import { Mail } from "../../components/Mail";
+import emailjs from "@emailjs/browser"; // Importação do EmailJS
+import { toast } from "sonner";
 
 export function Register() {
   const [nomeProjetista, setNomeProjetista] = useState("");
@@ -14,18 +17,49 @@ export function Register() {
   const [software, setSoftware] = useState("");
   const [link, setLink] = useState("");
 
-  const handleSubmit = () => {
-    console.log({
-      nomeProjetista,
-      emailProjetista,
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault(); // Evita o comportamento padrão do formulário
+
+    const templateParams = {
+      nome_profissional: nomeProjetista,
+      email_profissional: emailProjetista,
       teste,
       entrevistador,
-      horarioTeste,
-      dataTeste,
+      horario_teste: horarioTeste,
+      data_teste: dataTeste,
       equipamento,
       software,
-      link
-    });
+      link,
+    };
+
+    emailjs
+      .send(
+        "service_hpz0xlk",
+        "template_4vqnfte",
+        templateParams,
+        "YubeUvYQg7MF0ZFu9"
+      )
+      .then(
+        () => {
+          alert("E-mail enviado com sucesso!");
+          toast.success("E-mail enviado com sucesso!")
+
+          // Limpa os campos do formulário
+          setNomeProjetista("");
+          setEmailProjetista("");
+          setTeste("");
+          setEntrevistador("");
+          setHorarioTeste("");
+          setDataTeste("");
+          setEquipamento("");
+          setSoftware("");
+          setLink("");
+        },
+        (err) => {
+          alert("Erro ao enviar e-mail.");
+          console.error("FAILED...", err);
+        }
+      );
   };
 
   return (
@@ -58,6 +92,19 @@ export function Register() {
           <InputText label="Link" value={link} onChange={(e) => setLink(e.target.value)} />
           <Button onClick={handleSubmit} type="button">Enviar</Button>
         </FormContainer>
+
+        <div>
+          <Mail
+            nome_profissional={nomeProjetista}
+            teste={teste}
+            software={software}
+            equipamento={equipamento}
+            entrevistador={entrevistador}
+            data_teste={dataTeste}
+            horario_teste={horarioTeste}
+            link={link}
+          />
+        </div>
       </RegisterContainer>
     </>
   );
