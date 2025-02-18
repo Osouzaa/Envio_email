@@ -16,9 +16,11 @@ export function Register() {
   const [equipamento, setEquipamento] = useState("");
   const [software, setSoftware] = useState("");
   const [link, setLink] = useState("");
+  const [isSending, setIsSending] = useState(false);
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault(); // Evita o comportamento padrão do formulário
+    setIsSending(true);
 
     const templateParams = {
       nome_profissional: nomeProjetista,
@@ -41,8 +43,12 @@ export function Register() {
       )
       .then(
         () => {
-          alert("E-mail enviado com sucesso!");
-          toast.success("E-mail enviado com sucesso!")
+          toast.success("E-mail enviado com sucesso!", {
+            style: {
+              padding: "1rem"
+            },
+            position: "top-right"
+          });
 
           // Limpa os campos do formulário
           setNomeProjetista("");
@@ -56,10 +62,11 @@ export function Register() {
           setLink("");
         },
         (err) => {
-          alert("Erro ao enviar e-mail.");
+          toast.error("Erro ao enviar e-mail.");
           console.error("FAILED...", err);
         }
-      );
+      )
+      .finally(() => setIsSending(false));
   };
 
   return (
@@ -85,12 +92,14 @@ export function Register() {
           </FieldGroup>
 
           <FieldGroup>
-            <InputText label="Equipamento" value={equipamento} onChange={(e) => setEquipamento(e.target.value)} />
+            <InputText label="Equipamento" value={equipamento} onChange={(e) => setEquipamento(e.target.value)} options={["", "Teste_tecnocar01@ad", "tecnocar02@ad"]} />
             <InputText label="Software" value={software} onChange={(e) => setSoftware(e.target.value)} options={["", "NX", "CATIA"]} />
           </FieldGroup>
 
           <InputText label="Link" value={link} onChange={(e) => setLink(e.target.value)} />
-          <Button onClick={handleSubmit} type="button">Enviar</Button>
+          <Button onClick={handleSubmit} type="button" disabled={isSending}>
+            {isSending ? "Enviando ..." : "Enviar"}
+          </Button>
         </FormContainer>
 
         <div>

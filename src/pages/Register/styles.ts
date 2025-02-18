@@ -37,6 +37,7 @@ export const Button = styled.button`
   justify-content: center;
 
   background: #FF4D00;
+  cursor: pointer;
 
   color: #DFE1E6;
   font-size: 20px;
