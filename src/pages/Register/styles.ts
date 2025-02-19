@@ -50,3 +50,51 @@ export const Button = styled.button`
     opacity: 0.6;
   }
 `
+
+export const CardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  
+  width: 400px;
+  padding: 24px;
+  background: #1E1E1E;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+export const CardTitle = styled.h2`
+  color: #C6CCD0;
+  font-family: 'Sora';
+  font-size: 1.5rem;
+`;
+
+export const CardContent = styled.p`
+  color: #DFE1E6;
+  font-size: 1rem;
+  text-align: center;
+`;
+
+export const CardButton = styled.button`
+  width: 100%;
+  padding: 12px;
+  background: #FF4D00;
+  border: none;
+  border-radius: 6px;
+  color: #DFE1E6;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &:hover {
+    background: #E64000;
+  }
+`;
