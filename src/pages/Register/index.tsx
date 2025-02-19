@@ -28,7 +28,9 @@ export function Register() {
       teste,
       entrevistador,
       horario_teste: horarioTeste,
-      data_teste: dataTeste,
+      data_teste: new Date(
+        new Date(dataTeste).getTime() + new Date(dataTeste).getTimezoneOffset() * 60000
+      ).toLocaleDateString("pt-BR"), // Corrigindo o fuso horário
       equipamento,
       software,
       link,
@@ -92,7 +94,7 @@ export function Register() {
           </FieldGroup>
 
           <FieldGroup>
-            <InputText label="Equipamento" value={equipamento} onChange={(e) => setEquipamento(e.target.value)} options={["", "Teste_tecnocar01@ad", "tecnocar02@ad"]} />
+            <InputText label="Equipamento" value={equipamento} onChange={(e) => setEquipamento(e.target.value)} options={["", "171154990", "1054109418", "895899823"]} />
             <InputText label="Software" value={software} onChange={(e) => setSoftware(e.target.value)} options={["", "NX", "CATIA"]} />
           </FieldGroup>
 

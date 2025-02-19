@@ -44,4 +44,9 @@ export const Button = styled.button`
   font-weight:500;
   border: none;
   border-radius: 6px;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
 `

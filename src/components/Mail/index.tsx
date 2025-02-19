@@ -44,7 +44,7 @@ export function Mail({ nome_profissional, teste, software, equipamento, entrevis
             <Highlight>Horário:</Highlight> {horario_teste}
           </p>
           <p>
-            <Highlight>Teams:</Highlight> <Link href={link}>{link}</Link>
+            <Highlight>Teams:</Highlight> <Link href={link}>Link de acesso a reunião</Link>
           </p>
         </Box>
       </Content>
