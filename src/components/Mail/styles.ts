@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  max-width: 700px;
+  max-width: 600px;
   margin: 30px auto;
   background-color: #ffffff;
   border-radius: 12px;
@@ -21,42 +21,61 @@ export const Header = styled.header`
 `;
 
 export const Logo = styled.img`
-  width: 250px;
-  height: auto;
-  margin-right: 20px;
+  width: 180px;
+  margin-left: 20px;
 `;
 
-export const Title = styled.h3`
+export const Title = styled.h1`
   margin: 0;
   font-size: 20px;
+  line-height: 1.2;
+  color: #fff;
 `;
 
 export const Content = styled.main`
   padding: 25px;
-  color: #333;
-
-  >  p {
-    margin: 1rem 0 ;
-  }
+  color: #333333;
+  text-align: left;
 `;
 
 export const Highlight = styled.span`
   color: #ff5200;
   font-weight: 700;
-
- 
 `;
 
-export const Box = styled.div`
-  background: #f9f9f9;
-  padding: 20px;
-  border-left: 6px solid #ff5200;
-  border-radius: 8px;
-  margin: 2rem 0;
+export const InfoTable = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+`;
 
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+export const TableHeader = styled.th`
+  padding: 12px 20px;
+  background-color: #222225;
+  color: #fff;
+  text-align: left;
+  font-weight: 600;
+  border: 1px solid #e5e5e5;
+`;
+
+export const TableRow = styled.tr`
+
+`;
+
+export const TableCell = styled.td`
+  padding: 12px 20px;
+  border: 1px solid #e5e5e5;
+  text-align: left;
+  vertical-align: middle;
+
+  &:first-child {
+    font-weight: 600;
+    background: #f1f1f1;
+  }
+
+  &:last-child {
+    color: #555;
+  }
 `;
 
 export const Footer = styled.footer`
@@ -66,15 +85,45 @@ export const Footer = styled.footer`
   border-radius: 0 0 12px 12px;
   color: #f6f6f6;
   font-size: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+`;
+
+export const Button = styled.a`
+  display: inline-block;
+  padding: 12px 25px;
+  color: #ffffff;
+  background-color: #21a1fd;
+  text-decoration: none;
+  border-radius: 8px;
+  margin-top: 20px;
+  transition: background-color 0.3s, transform 0.3s;
+  font-size: 16px;
+
+  &:hover {
+    background-color: #89dcfc;
+    transform: translateY(-2px);
+  }
 `;
 
 export const Link = styled.a`
   color: #21a1fd;
   text-decoration: none;
+
   &:hover {
     text-decoration: underline;
   }
 `;
+
+export const List = styled.ul`
+  padding-left: 20px;
+`;
+
+export const ListItem = styled.li`
+  margin-bottom: 8px;
+`;
+
+export const Heading = styled.h2`
+  color: #000;
+  font-size: 20px;
+  margin-bottom: 15px;
+`;
+

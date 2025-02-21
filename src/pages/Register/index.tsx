@@ -158,12 +158,6 @@ export function Register() {
 
               <FieldGroup>
                 <InputText
-                  label="Equipamento"
-                  value={equipamento}
-                  onChange={(e) => setEquipamento(e.target.value)}
-                  options={["", "171154990", "1054109418", "895899823"]}
-                />
-                <InputText
                   label="Software"
                   value={software}
                   onChange={(e) => setSoftware(e.target.value)}
@@ -184,7 +178,6 @@ export function Register() {
               nome_profissional={nomeProjetista}
               teste={teste}
               software={software}
-              equipamento={equipamento}
               entrevistador={entrevistador}
               data_teste={dataTeste}
               horario_teste={horarioTeste}
